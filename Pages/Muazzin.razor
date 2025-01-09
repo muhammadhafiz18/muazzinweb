@@ -1,0 +1,138 @@
+@page "/"
+
+<PageTitle>Muazzin</PageTitle>
+
+<div class="header">
+    <div class="date">
+        <div class="weekday">@CurrentWeekday</div>
+        <div class="day-year">@CurrentDayYear</div>
+    </div>
+    <div class="time">@CurrentTime</div>
+</div>
+
+<div style="margin-top: 14rem;"></div>
+
+<MudGrid Spacing="@Spacing" Justify="Justify.Center">
+    @foreach (var item in Items)
+    {
+        <MudItem xs="12" sm="6" md="3" lg="3">
+            <MudCard Class="mud-card" Style="@GetCardStyle(item.Color!)">
+                <MudCardHeader>
+                    <MudText Typo="Typo.h6" Class="card-title">
+                        <img src="@item.ImageUrl" alt="Card Logo" class="card-logo"
+                            style="width: 24px; height: 24px; margin-right: 10px;" />
+                        @item.Title
+                    </MudText>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudText Typo="Typo.body2" Class="card-time">@item.Time</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <div style="margin-top: 0.5rem;"></div>
+    }
+    <!-- New card for countdown to next prayer -->
+    <MudItem xs="12" sm="6" md="3" lg="3">
+        <MudCard Class="mud-card" Style="white">
+            <MudCardHeader>
+                <MudText Typo="Typo.h6" Class="next-prayer-time" Style="green">
+                        @NextPrayerTitle
+                    </MudText>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudText Typo="Typo.body2" Class="card-next-prayer-time">@TimeLeft</MudText>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+</MudGrid>
+
+<style>
+    body {
+        background-image: url('https://wallpapers.com/images/featured/islamic-xptqk5xw6adpezzv.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+    }
+
+    /* Header styling */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        right: 20px;
+        width: calc(100% - 40px);
+        z-index: 10;
+    }
+
+    .date {
+        text-align: left;
+    }
+
+    .weekday {
+        font-size: 16px;
+        color: white;
+        font-family: 'Arial', 'Verdana', sans-serif;
+    }
+
+    .day-year {
+        font-size: 14px;
+        color: white;
+        font-family: 'Arial', 'Verdana', sans-serif;
+    }
+
+    .time {
+        font-size: 16px;
+        color: white;
+        font-family: 'Arial', 'Verdana', sans-serif;
+    }
+
+    /* Style for the card title (text) */
+    .card-title {
+        color: white;
+        font-weight: 600;
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Style for the card time */
+    .card-time {
+        text-align: right;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+        color: white;
+    }
+
+    .card-next-prayer-time {
+        text-align: right;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+        color: black;
+    }
+
+    .next-prayer-time {
+        color: black;
+        font-weight: 600;
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Optional: Styling for card background */
+    .mud-card {
+        display: flex;
+        justify-content: space-between;
+        /* Space between the title and time */
+        align-items: center;
+        border-radius: 8px;
+        padding: 16px;
+        background-color: white;
+        opacity: 0.8;
+    }
+</style>
