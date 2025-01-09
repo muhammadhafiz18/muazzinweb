@@ -8,13 +8,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
       with:
         fetch-depth: 0 # Ensure full history is fetched to avoid any issues with the gh-pages branch
-
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
@@ -38,3 +37,5 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./bin/release/net9.0/publish/wwwroot
+    permissions:
+      contents: write
