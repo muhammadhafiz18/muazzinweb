@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Muazzinweb",
   "resources": {
-    "hash": "sha256-C6yJCzdsdHEpnDdydgdA6YnBSvkJ7Bh3xzl++MbNCn8=",
+    "hash": "sha256-VxHI/EoFdlLRN2dEjMx5xbz034M5E25pfIpBKu+J+F4=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Components.v7i7wymjem.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Web.ngmr6kx0gy.wasm": "Microsoft.AspNetCore.Components.Web.wasm",
@@ -20,7 +20,7 @@
       "Microsoft.Extensions.Primitives.8omryeirak.wasm": "Microsoft.Extensions.Primitives.wasm",
       "Microsoft.JSInterop.426305nhc4.wasm": "Microsoft.JSInterop.wasm",
       "Microsoft.JSInterop.WebAssembly.heoad7mujs.wasm": "Microsoft.JSInterop.WebAssembly.wasm",
-      "Muazzinweb.79oa5ll65w.wasm": "Muazzinweb.wasm",
+      "Muazzinweb.l22yuahgv7.wasm": "Muazzinweb.wasm",
       "MudBlazor.emhwe81bbx.wasm": "MudBlazor.wasm",
       "Newtonsoft.Json.qkbufwhni2.wasm": "Newtonsoft.Json.wasm",
       "System.Collections.Concurrent.4lwtfqh74w.wasm": "System.Collections.Concurrent.wasm",
@@ -111,7 +111,7 @@
       "Microsoft.Extensions.Primitives.8omryeirak.wasm": "sha256-iOXJ6xMILdIdSWDD2fNHtnrXI0YtuWx4chp/bwgCVgc=",
       "Microsoft.JSInterop.426305nhc4.wasm": "sha256-lNqP2ot1f2PhPr/5ZgFueuYFhUgz/pVAaqmi0u4H8Lo=",
       "Microsoft.JSInterop.WebAssembly.heoad7mujs.wasm": "sha256-99wG3VH14sWkwPaF5rX6YAcJvtAhDuqonwihvj2m5HA=",
-      "Muazzinweb.79oa5ll65w.wasm": "sha256-tf2R6rtjgLnff6UZqO4LRlyIWmDOlNODf3bE6j42vIA=",
+      "Muazzinweb.l22yuahgv7.wasm": "sha256-A2vNv5LeMJn/Ovg2Bq2/GzaLHlDpYDhrjJDq5ue28wY=",
       "MudBlazor.emhwe81bbx.wasm": "sha256-yiCi55zqFha6hhoW0ugrvCiSboC+zA/+O46qS0UhETk=",
       "Newtonsoft.Json.qkbufwhni2.wasm": "sha256-GlXMWKvDs45M2pACoR3Y4Qh8mcrOZGljqmvJY+6JZ5s=",
       "System.Collections.Concurrent.4lwtfqh74w.wasm": "sha256-yM6tthLPysafygagTyZEA5/KoDLMABCcsWZ8ofnj8GQ=",
