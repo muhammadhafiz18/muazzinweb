@@ -2,6 +2,7 @@
 
 <PageTitle>Muazzin</PageTitle>
 
+
 <div class="header">
     <div class="date">
         <div class="weekday">@CurrentWeekday</div>
@@ -14,6 +15,12 @@
 </div>
 
 <div style="margin-top: 14rem;"></div>
+
+@if(Latitude == "0")
+{
+    <MudChip T="string" Class="chip-style">@WarningMessage</MudChip>
+    <div style="margin-top: 0.5rem;"></div>
+}
 
 <MudGrid Spacing="@Spacing" Justify="Justify.Center">
     @foreach (var item in Items)
@@ -147,5 +154,18 @@
         padding: 16px;
         background-color: white;
         opacity: 0.8;
+    }
+    .chip-style {
+    background-color: red; /* Warm orange color */
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+    }
+    .chip-style:hover {
+        background-color: #FB8C00; /* Slightly darker shade on hover */
+        cursor: pointer;
     }
 </style>
