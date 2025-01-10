@@ -7,7 +7,10 @@
         <div class="weekday">@CurrentWeekday</div>
         <div class="day-year">@CurrentDayYear</div>
     </div>
-    <div class="time">@CurrentTime</div>
+    <div class="time-city">
+        <div class="city">@Location</div>
+        <div class="time">@CurrentTime</div>
+    </div>
 </div>
 
 <div style="margin-top: 14rem;"></div>
@@ -72,6 +75,10 @@
         text-align: left;
     }
 
+    .time-city {
+        text-align: right;
+    }
+
     .weekday {
         font-size: 16px;
         color: white;
@@ -85,6 +92,12 @@
     }
 
     .time {
+        font-size: 16px;
+        color: white;
+        font-family: 'Arial', 'Verdana', sans-serif;
+    }
+
+    .city {
         font-size: 16px;
         color: white;
         font-family: 'Arial', 'Verdana', sans-serif;

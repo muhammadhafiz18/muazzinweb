@@ -1,5 +1,7 @@
 using Muazzinweb.Services;
 using Muazzinweb.Models;
+using Microsoft.JSInterop;
+using Microsoft.AspNetCore.Components;
 
 namespace Muazzinweb.Pages;
 
@@ -12,11 +14,18 @@ public partial class Muazzin
     public string TimeLeft { get; set; } = "";
     public string NextPrayerTitle { get; set; } = "";
     public List<CardItem> Items { get; set; } = [];
+    public string Latitude { get; set; } = "";
+    public string Longitude { get; set; } = "";
+    public string Location { get; set; } = "";
+    [Inject] public IJSRuntime? JSRuntime { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        var prayerTimes = await new GetPrayerTimes().GetPrayerTimesAsync(DateTime.Now.ToString("yyyy-MM-dd"), "Tashkent",
-        "UZ");
+        var userLocation = await JSRuntime!.InvokeAsync<GeolocationCoordinates>("getLocation");
+        Latitude = userLocation.Latitude.ToString();
+        Longitude = userLocation.Longitude.ToString();
+     
+        var prayerTimes = await new GetPrayerTimes().GetPrayerTimesAsync(Latitude, Longitude);
 
         if (prayerTimes != null)
         {
@@ -38,6 +47,8 @@ public partial class Muazzin
             "https://static-00.iconduck.com/assets.00/night-with-stars-emoji-2048x2048-lgxcow2a.png", Time = prayerTimes.Isha }
             ];
         }
+
+        Location = prayerTimes!.Location!;
 
         DateTime currentTime = DateTime.Now;
 
@@ -80,18 +91,18 @@ public partial class Muazzin
         };
         timer.Start();}
 
-private void UpdateDateTime(DateTime nextPrayerTime, string nextPrayerName)
-    {
-        DateTime currentTime = DateTime.Now;
-        CurrentWeekday = DateTime.Now.ToString("dddd");
-        CurrentDayYear = DateTime.Now.ToString("MMMM dd, yyyy");
-        CurrentTime = DateTime.Now.ToString("HH:mm:ss");
-        if (nextPrayerTime != default)
+    private void UpdateDateTime(DateTime nextPrayerTime, string nextPrayerName)
         {
-            TimeLeft = (nextPrayerTime - currentTime).ToString(@"hh\:mm\:ss");
-            NextPrayerTitle = $"{nextPrayerName}";
+            DateTime currentTime = DateTime.Now;
+            CurrentWeekday = DateTime.Now.ToString("dddd");
+            CurrentDayYear = DateTime.Now.ToString("MMMM dd, yyyy");
+            CurrentTime = DateTime.Now.ToString("HH:mm:ss");
+            if (nextPrayerTime != default)
+            {
+                TimeLeft = (nextPrayerTime - currentTime).ToString(@"hh\:mm\:ss");
+                NextPrayerTitle = $"{nextPrayerName}";
+            }
         }
-    }
 
     private string GetCardStyle(string color) => $"background-color: {color};";
 }

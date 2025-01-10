@@ -7,11 +7,11 @@ public class GetPrayerTimes
 {
     private static readonly HttpClient client = new();
 
-    public async Task<PrayerTimes> GetPrayerTimesAsync(string date, string city, string country, int method = 4, int school
+    public async Task<PrayerTimes> GetPrayerTimesAsync(string latitude, string longitude, int method = 4, int school
     = 1)
     {
         var url =
-        $"https://api.aladhan.com/v1/timingsByCity/{date}?city={city}&country={country}&method={method}&school={school}";
+        $"https://api.aladhan.com/v1/timings?latitude={latitude}&longitude={longitude}&method={method}&school={school}";
 
         var response = await client.GetStringAsync(url);
 
@@ -23,6 +23,7 @@ public class GetPrayerTimes
 
             return new PrayerTimes
             {
+                Location = jsonResponse?.Data?.Meta?.Timezone,
                 Fajr = timings!.Fajr,
                 Sunrise = timings.Sunrise,
                 Dhuhr = timings.Dhuhr,
