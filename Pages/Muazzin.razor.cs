@@ -2,6 +2,7 @@ using Muazzinweb.Services;
 using Muazzinweb.Models;
 using Microsoft.JSInterop;
 using Microsoft.AspNetCore.Components;
+using MudBlazor;
 
 namespace Muazzinweb.Pages;
 
@@ -17,16 +18,28 @@ public partial class Muazzin
     public string Latitude { get; set; } = "";
     public string Longitude { get; set; } = "";
     public string Location { get; set; } = "";
+    public string WarningMessage { get; set; } = "";
     [Inject] public IJSRuntime? JSRuntime { get; set; }
+    [Inject] public ISnackbar? Snackbar { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         var userLocation = await JSRuntime!.InvokeAsync<GeolocationCoordinates>("getLocation");
         Latitude = userLocation.Latitude.ToString();
         Longitude = userLocation.Longitude.ToString();
-     
-        var prayerTimes = await new GetPrayerTimes().GetPrayerTimesAsync(Latitude, Longitude);
 
+        var prayerTimes = new PrayerTimes();
+
+        if (Latitude == "0")
+        {
+            prayerTimes = await new GetPrayerTimes().GetPrayerTimesAsync("41.311081", "69.240562");
+            WarningMessage = "You are seeing Tashkent's prayer times because location access is denied."; 
+        }
+        else
+        {
+            prayerTimes = await new GetPrayerTimes().GetPrayerTimesAsync(Latitude, Longitude); 
+        }     
+        
         if (prayerTimes != null)
         {
             Items =
