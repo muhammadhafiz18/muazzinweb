@@ -45,7 +45,13 @@
                                 longitude: position.coords.longitude
                             });
                         },
-                        (error) => reject(error)
+                        (error) => {
+                            // If access is denied or there is an error, return default values (0, 0)
+                            resolve({
+                                latitude: 0,
+                                longitude: 0
+                            });
+                        }
                     );
                 }
             });
