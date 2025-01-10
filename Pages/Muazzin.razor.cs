@@ -9,7 +9,7 @@ public partial class Muazzin
     public string CurrentWeekday { get; set; } = DateTime.Now.ToString("dddd");
     public string CurrentDayYear { get; set; } = DateTime.Now.ToString("MMMM dd, yyyy");
     public string CurrentTime { get; set; } = DateTime.Now.ToString("HH:mm:ss");
-    public string TimeLeft { get; set; } = "00:00:00";
+    public string TimeLeft { get; set; } = "";
     public string NextPrayerTitle { get; set; } = "";
     public List<CardItem> Items { get; set; } = [];
 
